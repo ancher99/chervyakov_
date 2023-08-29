@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const str =prompt('Введите текст с пробелами');
+       
+        let last = null
+        function aa() {
+
+            let i = 0
+            while (str[i] == ' ') {
+                str.indexOf(' ', i)
+                ++i
+            }
+
+            let c = str.length - 1;
+            while (str[c] == ' ') {
+                last = str.lastIndexOf(' ', c)
+                --c
+            }
+ 
+            return str.slice(i, last);
+        }
+        
+        alert(`@${aa(str)}@`);
+
+
+    </script>
+</body>
+
+</html>
