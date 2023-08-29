@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="1" onclick="getNumber(1)">
+    <input type="button" value="2" onclick="getNumber(2)">
+    <input type="button" value="3" onclick="getNumber(3)">
+    <input type="button" value="*" onclick="getSign('*')">
+    <br>
+    <input type="button" value="4" onclick="getNumber(4)">
+    <input type="button" value="5" onclick="getNumber(5)">
+    <input type="button" value="6" onclick="getNumber(6)">
+    <input type="button" value="/" onclick="getSign('/')">
+    <br>
+    <input type="button" value="7" onclick="getNumber(7)">
+    <input type="button" value="8" onclick="getNumber(8)">
+    <input type="button" value="9" onclick="getNumber(9)">
+    <input type="button" value="-" onclick="getSign('-')">
+    <br>
+    <input type="button" value="=" onclick="getResult()">
+    <input type="button" value="0" onclick="getNumber(0)">
+    <input type="button" value="+" onclick="getSign('+')">
+
+<script>
+ let num1=null;
+ let sign=null;
+ let num2=null;
+ let res;
+
+  function getNumber(num){
+    if (num1== null){
+        num1=num
+    } else { 
+        num2=num
+    }
+    console.log(num);
+  }
+
+  function getSign (si) {
+   if (sign==null){
+    sign=si
+    console.log(si)
+   }
+
+
+  }
+
+  function getResult() {
+   switch (sign) {
+    case '*':
+        res=(num1*num2);
+        break;
+        
+    case '/':
+    res=(num1/num2);
+        break;
+    
+    case '-':
+    res=(num1-num2);
+        break;
+   
+    case '+':
+    res=(num1+num2);
+        break;
+   
+   }
+   console.log(res);
+  }
+</script>
+</body>
+</html>
