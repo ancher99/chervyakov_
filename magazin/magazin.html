@@ -9,74 +9,59 @@
     <title>Document</title>
     <style>
         #app {
-              width: 592px;
-              display: flex;
-              margin: 0 auto;
-              justify-content: space-between;
-              flex-flow: wrap;
-          }
-          .card{
-              margin-bottom: 20px;
-          }
-  </style>
+            width: 592px;
+            display: flex;
+            margin: 0 auto;
+            justify-content: space-between;
+            flex-flow: wrap;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-
-
 <body>
+    <input type="text" name="brand"> <br>
+    <input type="text" name="description"> <br>
+    <input type="text" name="img"> <br>
+    <input type="button" value="add" onclick="add()">
 
     <div id="app"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script>
 
-        const company = [
-            {
-                'id': 1,
-                'name': 'KFC',
-                'description': 'Kentucky Fried Chicken, сокращённо KFC — международная сеть ресторанов общественного питания, специализирующаяся на блюдах из курицы.',
-                'img': 'https://www.kfc.by/admin/files/4653.svg'
-            },
+const company = [];
 
-            {
-                'id': 2,
-                'name': 'McDonald’s',
-                'description': 'McDonald’s — американская корпорация, работающая в сфере общественного питания, крупнейшая в мире сеть ресторанов быстрого питания, работающая по системе франчайзинга.',
-                'img': 'https://assets.turbologo.ru/blog/ru/2021/05/24060504/mcdonalds-logo-2018.png'
-            },
-            {
-                'id': 3,
-                'name': 'McDonald’s',
-                'description': 'Burger King Corporation — американская компания, владелец глобальной сети заведений быстрого питания Burger King, специализирующейся на гамбургерах.',
-                'img': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/184px-Burger_King_2020.svg.png'
-            },
-            {
-                'id': 4,
-                'name': 'Domino’s Pizza',
-                'description': 'Domino’s Pizza — американская компания, работающая в сфере общественного питания. Управляет крупнейшей в мире сетью пиццерий.',
-                'img': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Domino%27s_pizza_logo.svg/640px-Domino%27s_pizza_logo.svg.png'
-            },
-        ]
+        const add = () => {
+            const brand = document.querySelector("[name='brand']").value;
+            const description = document.querySelector("[name='description']").value;
+            const img = document.querySelector("[name='img']").value;
 
+            company.push({
+                brand, description, img
+            })
 
-
-        const app = document.getElementById('app');
-        let cc = '';
-        company.forEach(companys => {
-            cc += `<div class="card" style="width: 18rem;">
+            render(company);
+        }
+       
+function render(){
+    const app = document.getElementById('app');
+    let cc = '';
+    company.forEach(companys => {
+        cc += `<div class="card" style="width: 18rem;">
                     <img src="${companys.img}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">${companys.name}</h5>
-                    <p class="card-text">${companys.description}</p>
-                     <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+                        <div class="card-body">
+                             <h5 class="card-title">${companys.brand}</h5>
+                             <p class="card-text">${companys.description}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
                 </div>`
         })
-
-        app.innerHTML=cc;
-
+        app.innerHTML = cc;
+        return app.innerHTML
+}
     </script>
 
 </body>
