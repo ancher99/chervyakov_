@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #app {
+            width: 592px;
+            display: flex;
+            margin: 0 auto;
+            justify-content: space-between;
+            flex-flow: wrap;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="brand"> <br>
+    <input type="text" name="description"> <br>
+    <input type="text" name="img"> <br>
+    <input type="text" name="price"><br>
+    <input type="range" name="filt" min="10" max="1000" step="10"><br>
+    <input type="button" value="добавить" onclick="add()"><br>
+    <input type="button" value="отфильтровать" onclick="filterPrice()"><br>
+<hr>
+    <div id="app"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+
+const company = [];
+
+        const add = () => {
+            const brand = document.querySelector("[name='brand']").value;
+            const description = document.querySelector("[name='description']").value;
+            const img = document.querySelector("[name='img']").value;
+            const price = document.querySelector("[name='price']").value;
+
+            company.push({
+                brand, description, img, price
+            })
+
+            render(company);
+        }
+       
+function render(item){
+    const app = document.getElementById('app');
+    let cc = '';
+    item.forEach(items => {
+        cc += `<div class="card" style="width: 18rem;">
+                    <img src="${items.img}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                             <h5 class="card-title">${items.brand}</h5>
+                             <p class="card-text">${items.description}</p>
+                             <p class="card-text">${items.price}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                </div>`
+        })
+        app.innerHTML = cc;
+        return app.innerHTML
+}
+
+function filterPrice(){
+    const filt = document.querySelector("[name='filt']").value;
+    console.log(filt)
+  const fir =company.filter(companys=> parseInt(companys.price)<filt)
+   render(fir);
+
+}
+    </script>
+
+</body>
+
+</html>
