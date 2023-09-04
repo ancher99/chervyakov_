@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #orange{
+        width: 50px;
+        height: 50px;
+        background-color: orange;
+    }
+    #black{
+        width: 100px;
+        height: 100px;
+        background-color: black;
+    }
+</style>
+<body>
+    <div id="orange" draggable="true"></div>
+    <hr>
+    <div id="black"></div>
+    <script>
+        const orange =document.getElementById('orange');
+        const black=document.getElementById('black')
+
+        orange.addEventListener('dragstart',() => {
+            console.log('dragstart')
+         })
+
+        orange.addEventListener('drag', ()=>{
+            console.log('drag')
+         })
+
+        orange.addEventListener('dragend',() =>{
+            console.log('dragend')
+
+         })
+
+        black.addEventListener("dragenter", () => {
+            console.log("dragenter")
+        })
+
+        black.addEventListener("dragover", (event) => {
+            event.preventDefault()
+            console.log("dragover")
+        })
+
+        black.addEventListener("dragleave", () => {
+            console.log("dragleave")
+        })
+
+        black.addEventListener("drop", () => {
+            console.warn("drop")
+        })
+        
+    </script>
+</body>
+</html>
