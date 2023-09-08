@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="border: brown 3px solid; width: 500px; height:500px">
+        <div id="squre" style="width: 100px; height: 100px; background-color: aqua; position: absolute;" ></div>
+    </div>
+</body>
+
+<script>
+    const sq= document.getElementById('squre')
+    let x=sq.offsetLeft
+    let y=sq.offsetTop
+    console.log(x,y)
+    
+    window.addEventListener('keydown', (e) =>{
+        console.log(e.keyCode)
+        switch(e.keyCode){
+            case 37:sq.style.left=left()+'px'
+            console.log(x);
+            break;
+            case 38:sq.style.bottom=bottom()+'px';
+            break;
+            case 39:sq.style.right=right()+'px';
+            break;
+            case 40:
+            break;
+        }
+    })
+    function left (){
+      return x-=10
+    }
+    function right (){
+      return x+=10
+    }
+    
+    function bottom (){
+      return y-=10
+    }
+    
+</script>
+</html>
