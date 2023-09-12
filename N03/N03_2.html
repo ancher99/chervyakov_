@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>  
+    
+       let male;
+        let name1;
+        let name2;
+        let name3;
+            do{
+             name1=prompt('Введите вашу фамилию');
+            } while (name1 == '');
+
+            do{
+             name2=prompt('Введите ваше имя');
+            } while (name2 == '');
+
+            do{
+             name3=prompt('Введите ваше отчество');
+            } while (name3 == '');
+
+        let age;
+             do {
+             age = parseInt(prompt('Введите ваш возраст'));
+             } while (isNaN(age));
+
+        const gender = confirm ('Ваш пол мужской?');
+      
+
+        if (gender) {
+                male=('мужской');
+            if(age>63)
+                pension=('да');
+            else
+                pension=('нет');
+        }
+        else {
+                male=('женский');
+            if(age>58)
+                pension=('да');
+            else
+                pension=('нет'); 
+        }
+
+        alert (`
+        ваше ФИО: ${name1} ${name2} ${name3}
+        ваш возраст в годах: ${age}
+        ваш возраст в днях:  ${age*365}
+        через 5 лет вам будет: ${age+5}
+        ваш пол: ${male} 
+        вы на пенсии: ${pension}`);
+        </script>
+</body>
+</html>
