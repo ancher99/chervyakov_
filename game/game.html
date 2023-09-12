@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="border: brown 3px solid; width: 500px; height:500px">
+    <div style="border: brown 3px solid; width: 500px; height:500px ; position: relative; margin-left: auto; margin-right: auto;">
         <div id="squre" style="width: 100px; height: 100px; background-color: aqua; position: absolute;" ></div>
     </div>
 </body>
 
 <script>
-    const sq= document.getElementById('squre')
+    let sq= document.getElementById('squre')
     let x=sq.offsetLeft
     let y=sq.offsetTop
     console.log(x,y)
@@ -21,27 +21,40 @@
     window.addEventListener('keydown', (e) =>{
         console.log(e.keyCode)
         switch(e.keyCode){
-            case 37:sq.style.left=left()+'px'
-            console.log(x);
+
+            case 37:
+              if(x<=0){
+              break;
+            }
+              x-=10;
+            sq.style.left=x+'px';
+    
             break;
-            case 38:sq.style.bottom=bottom()+'px';
+
+            case 38:if(y<=0){
+              break;
+            }
+              y-=10;
+            sq.style.top=y+'px';
+           
+           break;
+
+            case 39: if(x>=400){
+              break;
+            }
+              x+=10;
+              sq.style.left=x+'px';
+           
             break;
-            case 39:sq.style.right=right()+'px';
-            break;
-            case 40:
+
+            case 40:if(y>=400){
+              break;
+            }y+=10;
+            sq.style.top=y+'px';
             break;
         }
     })
-    function left (){
-      return x-=10
-    }
-    function right (){
-      return x+=10
-    }
-    
-    function bottom (){
-      return y-=10
-    }
+
     
 </script>
 </html>
