@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const str = prompt('Введите палиндров', 'Аргентина манит негра');
+
+        function pol(str) {
+            const a = str.toLowerCase()
+            let chars = ''
+
+            for (let i = 0; i < a.length; i++) {
+                chars += char(a[i])
+
+            }
+
+            const lastIndex = chars.length - 1
+            for (let i = 0; i < chars.length; i++) {
+
+                if (chars[i] == chars[lastIndex - i]) {
+
+                }
+                else {
+                    return 'это не палиндром'
+                }
+
+
+            }
+            return 'это палиндром'
+        }
+
+        function char(a) {
+            const obj = {
+                ' ': ' ',
+                ',': ' ',
+                '.': ' ',
+                'ъ': ' ',
+                'ь': ' '
+            }
+            const ch = {
+                'ё': 'е'
+            }
+
+            if (obj[a]) {
+                return '';
+            }
+            else {
+                if (ch[a]) {
+                    return ch[a]
+                }
+                else {
+                    return a
+                }
+
+            }
+
+
+        }
+
+        alert(pol(str))
+
+
+
+    </script>
+</body>
+
+</html>
