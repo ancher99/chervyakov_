@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt('введите слово');
+        const char = ['а', 'я', 'у', 'ю', 'о', 'е', 'ё', 'э', 'и', 'ы'];
+
+
+        function vowels() {
+            let sum = null;
+            for (let i = 0; i < str.length; i++) {
+                if (char.includes(str[i])) {
+                    sum += 1;
+                }
+            }
+
+            return sum
+
+        }
+
+        alert(`количество гласных букв: ${vowels()}`);
+
+
+
+    </script>
+</body>
+
+</html>
