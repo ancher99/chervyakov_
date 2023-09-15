@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #app{
+        width: 500px;
+        height: 500px;
+    }
+</style>
+<body>
+    <input type="text" name="h1" placeholder="h1">
+    <input type="button" name='h' value="h1" onclick="addH1()">
+    <br>
+    <input type="text" name="p" placeholder="p">
+    <input type="button" value="p" onclick=""><br>
+    <input type="text" name="li1" placeholder="li">
+    <input type="button"  value="create" onclick=""><br>
+    <input type="text" name="li2" placeholder="li"><br>
+    <input type="text" name="li3" placeholder="li">
+    <hr>
+    <div id="app"></div>
+    <script>
+
+    function addH1(){
+const h1=document.querySelector('[name="h1"]').value
+console.log(h1)
+let div=document.getElementById('app')
+
+
+
+    }
+    </script>
+</body>
+</html>
