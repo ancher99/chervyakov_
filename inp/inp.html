@@ -10,6 +10,7 @@
     #app{
         width: 500px;
         height: 500px;
+        border: solid 2px red;
     }
 </style>
 <body>
@@ -17,7 +18,7 @@
     <input type="button" name='h' value="h1" onclick="addH1()">
     <br>
     <input type="text" name="p" placeholder="p">
-    <input type="button" value="p" onclick=""><br>
+    <input type="button" value="p" onclick="addP()"><br>
     <input type="text" name="li1" placeholder="li">
     <input type="button"  value="create" onclick=""><br>
     <input type="text" name="li2" placeholder="li"><br>
@@ -27,12 +28,33 @@
     <script>
 
     function addH1(){
-const h1=document.querySelector('[name="h1"]').value
-console.log(h1)
-let div=document.getElementById('app')
+let h1=document.querySelector('[name="h1"]').value
+let out=document.getElementById('app')
 
+function bulidWrapper(tag){
+        return function(words){
+        return `<${tag}>${words}</${tag}>`
+            }
+        }
+    let elem1=bulidWrapper('H1')
+    let elem2=elem1(h1)
+    console.log(elem2)
+    out.innerHTML+=elem2
 
+    }
+    function addP(){
+let p=document.querySelector('[name="p"]').value
+let out=document.getElementById('app')
 
+function bulidWrapper(tag){
+        return function(words){
+        return `<${tag}>${words}</${tag}>`
+          }
+        }
+    let elem1=bulidWrapper('p')
+    let elem2=elem1(p)
+    console.log(elem2)
+    out.innerHTML+=elem2 
     }
     </script>
 </body>

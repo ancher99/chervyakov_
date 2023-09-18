@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+
+        function bulidWrapper(tag){
+          return function(words){
+            let chars=''
+                for(let i=0; i<words.length; i++){
+            chars+=char(words[i])
+                }
+                return `<${tag}>${chars}</${tag}>`
+          }
+        }
+
+        function char(a){
+        const obj ={ 
+                "<": "&lt;",
+                ">": "&gt;",
+                "'": "&rsquo;",
+                '"': "&rdquo;",
+                "&": "&amp;",
+            }
+            if  (a in obj){
+                return obj[a]
+            }
+            return a
+        }
+
+        let wrapH1=bulidWrapper('H1')
+        let wrapP=bulidWrapper('P')
+        console.log(wrapH1('sad asd'))
+        console.log(wrapP('sad asd'))
+    </script>
+</body>
+</html>
