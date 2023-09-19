@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     function bulidWrapper(tag){
+        let tags=chang(tag)
+          return function(word){
+            let words=chang(word)
+            return function (attribute){
+                let attributes=''
+                let key=''
+                let attr=''
+                for( let k in attribute){
+                    
+                    key=chang(k)
+                    
+                    attributes=chang(attribute[k])
+                    
+                    attr +=` ${key}='${attributes}'`
+                }
+               
+                return `<${tags}${attr}>${words}</${tags}>`
+            }
+        }
+    }
+
+
+    function chang (sym){
+        let chars=''
+                for(let i=0; i<sym.length; i++){
+            chars+=char(sym[i])
+                }
+
+                function char(a){
+        const obj ={ 
+                "<": "&lt;",
+                ">": "&gt;",
+                "'": "&rsquo;",
+                '"': "&rdquo;",
+                "&": "&amp;",
+            }
+            if  (a in obj){
+                return obj[a]
+            }
+            return a
+        }
+      
+        return chars
+    }
+
+        let wrapH1=bulidWrapper('H1');
+        let wrapP=bulidWrapper('P');
+        console.log(wrapP('Однажды в студеную зимнюю пору')());
+        console.log(wrapP('Однажды в студеную зимнюю пору')({lang:"ru"}));
+        console.log(wrapP('Однажды в <студеную> зимнюю пору')());
+        console.log(wrapH1('Стихи')({align:"center", title:"M&M's"}));
+          
+
+
+    </script>
+</body>
+</html>
