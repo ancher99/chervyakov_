@@ -20,22 +20,28 @@
     <input type="text" name="p" placeholder="p">
     <input type="button" value="p" onclick="addP()"><br>
     <input type="text" name="li1" placeholder="li">
-    <input type="button"  value="create" onclick=""><br>
+    <input type="button"  value="create" onclick="addUL()"><br>
     <input type="text" name="li2" placeholder="li"><br>
     <input type="text" name="li3" placeholder="li">
     <hr>
     <div id="app"></div>
     <script>
+        let out=document.getElementById('app')
 
-    function addH1(){
-let h1=document.querySelector('[name="h1"]').value
-let out=document.getElementById('app')
-
-function bulidWrapper(tag){
+    function bulidWrapper(tag){
         return function(words){
         return `<${tag}>${words}</${tag}>`
-            }
+          }
         }
+
+        function bulidUl(tag){
+        return function(words){
+        return `<ul><${tag}>${words}</${tag}></ul>`
+          }
+        }
+
+    function addH1(){
+    let h1=document.querySelector('[name="h1"]').value
     let elem1=bulidWrapper('H1')
     let elem2=elem1(h1)
     console.log(elem2)
@@ -43,19 +49,40 @@ function bulidWrapper(tag){
 
     }
     function addP(){
-let p=document.querySelector('[name="p"]').value
-let out=document.getElementById('app')
-
-function bulidWrapper(tag){
-        return function(words){
-        return `<${tag}>${words}</${tag}>`
-          }
-        }
+    let p=document.querySelector('[name="p"]').value
     let elem1=bulidWrapper('p')
     let elem2=elem1(p)
     console.log(elem2)
     out.innerHTML+=elem2 
     }
+
+    function addUL(){
+        const a=''
+
+        let li1=document.querySelector('[name="li1"]').value
+        if (li1!==a){
+            let elem1=bulidUl('li')
+        let elemOne=elem1(li1)
+        out.innerHTML+=elemOne 
+        }
+
+        let li2=document.querySelector('[name="li2"]').value
+        if(li2!==a){
+            let elem1=bulidUl('li')
+            let elemTwo=elem1(li2)
+            out.innerHTML+=elemTwo 
+        }
+
+        let li3=document.querySelector('[name="li3"]').value
+        if(li3!==a){
+            let elem1=bulidUl('li')
+            let elemThree=elem1(li3)
+            out.innerHTML+=elemThree
+        }
+    }
+
+
+
     </script>
 </body>
 </html>
