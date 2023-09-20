@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<input type="button" value="ввести информации о напитке" onclick="addVal()"><br>
+<input type="button" value="получить информацию о напитке" onclick="getVal()"><br>
+<input type="button" value="удалить напиток" onclick="del()"><br>
+<input type="button" value="перечень всех напитков" onclick="keys()">
+    <script>
+        function HashStorageFunc(){
+            
+            let private={}
+
+            this.addValue=function(key,value){
+                private[key]=value
+                
+            }
+
+            this.getValue=function(key){
+                return private[key]
+            }
+
+            this.deleteValue=function(key){
+                if(key in private){
+                    delete private[key]    
+                    return true
+                }
+                return false
+            }
+
+            this.getKeys= function(){
+                let mas=[]
+                for(let k in private){
+                    mas.push(k)
+                }
+                return mas
+            }
+            
+           
+        }
+
+
+        let drinkStorage=new HashStorageFunc();
+
+
+        drinkStorage.addValue('Кола',{alco:'нет',
+        rec:'вода,лимоны,лайм,апельсины,сахар,кинза,корица,мускатный орех,кофе, ванильный экстракт, газировка'})
+
+        drinkStorage.addValue('Виски',{alco:'да',
+        rec:'ячменный солод, вода,дрожжи'})
+
+        drinkStorage.addValue('Водка',{alco:'да',
+        rec:'сахар, вода'})
+
+
+
+        
+        function addVal(){
+            const name=prompt('Как называется напиток?')
+            const alcohol=prompt('Этот напиток алкогольный?')
+            const recipe =prompt('Каков состав напитка ?')
+            drinkStorage.addValue(name,{alco:alcohol, rec:recipe})
+        }
+
+        function getVal(){
+            const name =prompt('Как называется напиток?')
+            const info=drinkStorage.getValue(name)
+            if(info){
+                alert(`
+            напиток ${name}
+            алкогольный: ${info.alco}
+            рецепт приготовления: ${info.rec}`)
+            }else{
+                alert(`Такого напитка в хранилище нет`)
+            }
+        }
+
+        function del(){
+            const name=prompt('Введите название напитка')
+            const info=drinkStorage.deleteValue(name)
+            if(info){
+                alert(`Напиток успешно удален из хранилища`)
+            }else{
+                alert(`такого напитка в хранилище нет`)
+            }
+        }
+
+        function keys(){
+            const name=drinkStorage.getKeys()
+            alert(`Напитки в хранилище:${name}`)
+            
+        }
+
+
+
+        
+    </script>
+</body>
+</html>
