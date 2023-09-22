@@ -30,7 +30,7 @@
             sq.style.left=x+'px';
     
             break;
-
+            
             case 38:if(y<=0){
               break;
             }
@@ -42,8 +42,12 @@
             case 39: if(x>=400){
               break;
             }
-              x+=10;
+            x+=10;
+            setInterval((x) => {
               sq.style.left=x+'px';
+            }, 100);
+            
+              
            
             break;
 
