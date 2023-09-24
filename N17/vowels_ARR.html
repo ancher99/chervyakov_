@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = prompt('Введите слово');
+        const char = ['а', 'я', 'у', 'ю', 'о', 'е', 'ё', 'э', 'и', 'ы'];
+
+
+        function vowelsForEach() {
+            let sum=null
+            let spl=[]
+            spl=str.split('')
+
+            function x (v){
+                if(char.includes(v)){
+                    sum += 1
+                }
+            }
+           
+            spl.forEach(x)
+            
+            return sum
+        }
+
+
+        function vowelsFilter(){
+            let sum=null;
+            let spl=[]
+            spl=str.split('')
+            function y (v){
+                if(char.includes(v)){
+                    sum+=1
+                    
+                }
+                
+            }
+            spl.filter(y)
+       
+            return sum
+        }
+
+
+        function vowelsReduce(){
+           
+            let spl=[]
+            spl=str.split('')
+
+            function z(r,v){
+                console.log(r)
+                if(char.includes(v)){
+                   return r+1
+                    
+                } return r
+            }
+           return spl.reduce(z,0)
+        }
+
+        alert(`количество гласных букв(forEach): ${vowelsForEach()}
+количество гласных букв(filter): ${vowelsFilter()}
+количество гласных букв(reduce): ${vowelsReduce()}`);
+
+
+
+    </script>
+</body>
+
+</html>
