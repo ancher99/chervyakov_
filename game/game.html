@@ -17,44 +17,63 @@
     let x=sq.offsetLeft
     let y=sq.offsetTop
     console.log(x,y)
+
+    let timer
     
     window.addEventListener('keydown', (e) =>{
         console.log(e.keyCode)
         switch(e.keyCode){
 
             case 37:
-              if(x<=0){
-              break;
-            }
+            clearInterval(timer)
+              timer= setInterval(()=> {
+                if(x==0){
+              clearInterval(timer)
+            }else{
               x-=10;
             sq.style.left=x+'px';
-    
+            } }, 10)
+            
             break;
             
-            case 38:if(y<=0){
-              break;
-            }
+            case 38:
+            clearInterval(timer)
+            timer=setInterval(()=>{
+              if(y==0){
+                clearInterval(timer)
+            }else{
               y-=10;
             sq.style.top=y+'px';
+            }
+            },10)
            
            break;
 
-            case 39: if(x>=400){
-              break;
+            case 39: 
+            clearInterval(timer)
+            timer = setInterval(() => {
+              if(x==400){
+              clearInterval(timer)
+            }else{
+              x+=10
+              sq.style.left=x+'px'
             }
-            x+=10;
-            setInterval((x) => {
-              sq.style.left=x+'px';
-            }, 100);
-            
-              
+             
+            }, 10);  
            
             break;
 
-            case 40:if(y>=400){
-              break;
-            }y+=10;
+            case 40:
+            clearInterval(timer)
+            timer=setInterval(()=>{
+              if(y==400){
+                clearInterval(timer)
+            }else{
+              y+=10;
             sq.style.top=y+'px';
+            }
+            },10)
+             
             break ;
         }
     })
