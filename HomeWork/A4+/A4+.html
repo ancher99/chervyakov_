@@ -36,28 +36,20 @@
 
         function char(a) {
             const obj = {
-                ' ': ' ',
-                ',': ' ',
-                '.': ' ',
-                'ъ': ' ',
-                'ь': ' '
+                ' ': '',
+                ',': '',
+                '.': '',
+                'ъ': '',
+                'ь': '',
+                'ё': 'е',
             }
-            const ch = {
-                'ё': 'е'
+            if(a in obj){
+                
+                return obj[a]
             }
 
-            if (obj[a]) {
-                return '';
-            }
-            else {
-                if (ch[a]) {
-                    return ch[a]
-                }
-                else {
-                    return a
-                }
-
-            }
+            return a
+            
 
 
         }
