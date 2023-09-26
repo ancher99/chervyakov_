@@ -11,15 +11,34 @@
     <script>
 
         const str =prompt('Введите палиндром','Аргентина манит негра');
+       
 
         function pol(str) {
+            const obj = {
+                ' ': '',
+                ',': '',
+                '.': '',
+                'ъ': '',
+                'ь': '',
+                'ё': 'е',
+            }
             let a = str.toLowerCase()
             let chars = ''
 
             for (let i = 0; i < a.length; i++) {
-                chars += char(a[i])
+                
+            if(a[i] in obj){
+                chars += obj[a[i]]
+                
+            }else{
+                chars += a[i]
+            }
+               
 
             }
+            console.log(chars)
+            
+            
             
                 if (chars[0] === chars[chars.length - 1]) {
                    
@@ -30,28 +49,6 @@
                     }
                     }
                     return 'это не палиндром'
-        }
-            
-        
-
-        function char(a) {
-            const obj = {
-                ' ': '',
-                ',': '',
-                '.': '',
-                'ъ': '',
-                'ь': '',
-                'ё': 'е',
-            }
-            if(a in obj){
-                
-                return obj[a]
-            }
-
-            return a
-            
-
-
         }
 
        alert(pol(str))
